@@ -8,7 +8,7 @@ class ScooterApp {
   constructor() {
     this.#stations = {
       "Bond Street": [],
-      Paddington: [],
+      "Paddington Station": [],
       "Acton Main Line": [],
     };
 
@@ -63,13 +63,11 @@ class ScooterApp {
 
     // Add the scooter to the station’s scooter list, and dock it
     this.#stations[station].push(scooter);
-    scooter.dock();
+    scooter.dock(station);
     console.log("Scooter is docked");
   }
 
   rentScooter(scooter, user) {
-    scooter.rent(user);
-
     // Remove scooter from station (why am I not given the station ? )
 
     // loop through all the stations
@@ -77,11 +75,10 @@ class ScooterApp {
       let index = 0;
 
       // loop through all the scooters at that station
-      for (const scoo in this.#stations[key]) {
-        // if the given scooter if found rent it, remove it, and console.log
+      for (const scoo of this.#stations[key]) {
+        // if the given scooter if found remove it, and console.log
         if (scoo.serial === scooter.serial) {
-          scooter.rent(user);
-          this.#registeredUsers[key].splice(scoo, 1);
+          this.#stations[key].splice(index, 1);
           console.log("Scooter is rented");
         } else {
           // else move the pointer by 1
