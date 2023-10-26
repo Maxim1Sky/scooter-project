@@ -1,5 +1,21 @@
 class Scooter {
   // scooter code here
+  #station;
+  #user;
+  #serial;
+  #charge;
+  #isBroken;
+
+  static nextSerial = 1;
+
+  constructor(station) {
+    this.#station = station;
+    this.#user = null;
+    this.#serial = this.nextSerial;
+    Scooter.nextSerial++;
+    this.#charge = 100;
+    this.#isBroken = false;
+  }
 
   async charge() {
     console.log("Starting charge");
