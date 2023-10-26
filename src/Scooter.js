@@ -38,6 +38,13 @@ class Scooter {
 
     console.log("Charge complete");
   }
+
+  async requestRepair() {
+    await new Promise((resolve) => setTimeout(resolve, 5000)); // wait 5 seconds
+    this.#isBroken = false;
+
+    console.log("Repair completed");
+  }
 }
 
 module.exports = Scooter;
