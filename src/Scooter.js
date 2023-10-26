@@ -20,6 +20,9 @@ class Scooter {
     if (this.#charge <= 20) throw new Error("Scooter needs to charge");
     if (this.#isBroken) throw new Error("Scooter need repair");
 
+    // another if statement cause I don't think it should be implemented in ScooterApp class
+    if (this.#user !== null) throw new Error("Scooter is rented");
+
     this.#user = user.username;
   }
 
