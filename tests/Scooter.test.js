@@ -11,11 +11,11 @@ describe("scooter object", () => {
 
 //Method tests
 describe("scooter methods", () => {
-  // test("charge", async () => {
-  //   const scooter = new Scooter();
-  //   await scooter.charge(); // we need to wait for the charge!
-  //   expect(scooter.charge).toBe(100);
-  // }); // <----- test from Codio
+  test("charge", async () => {
+    const scooter = new Scooter();
+    await scooter.charge(); // we need to wait for the charge!
+    expect(scooter.charge).toBe(100);
+  }); // <----- test from Codio
   // tests here!
   //rent method
   //dock method
