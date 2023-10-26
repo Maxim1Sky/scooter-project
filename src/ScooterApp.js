@@ -28,6 +28,7 @@ class ScooterApp {
   loginUser(username, password) {
     if (this.#registeredUsers[username]) {
       this.#registeredUsers[username].login(password);
+      console.log("User has been logged in");
     } else {
       console.log("Incorrect Username");
     }
