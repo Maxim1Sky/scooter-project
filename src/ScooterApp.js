@@ -23,6 +23,7 @@ class ScooterApp {
     const newUser = new User(username, password, age);
     this.#registeredUsers[username] = newUser;
     console.log("User has been registered!");
+    return newUser;
   }
 
   loginUser(username, password) {
@@ -36,6 +37,7 @@ class ScooterApp {
 
   logoutUser(username) {
     this.#registeredUsers[username].logout();
+    console.log("User is logged out");
   }
 
   createScooter(station) {
@@ -69,10 +71,21 @@ class ScooterApp {
     scooter.rent(user);
 
     // Remove scooter from station (why am I not given the station ? )
+
+    // loop through all the stations
     for (const key in this.#stations) {
+      let index = 0;
+
+      // loop through all the scooters at that station
       for (const scoo in this.#stations[key]) {
-        if (scoo === scooter) {
-          return;
+        // if the given scooter if found rent it, remove it, and console.log
+        if (scoo.serial === scooter.serial) {
+          scooter.rent(user);
+          this.#registeredUsers[key].splice(scoo, 1);
+          console.log("Scooter is rented");
+        } else {
+          // else move the pointer by 1
+          index++;
         }
       }
     }

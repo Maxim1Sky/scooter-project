@@ -19,19 +19,30 @@ scooterApp.registerUser("John", "wrwerwer", 43);
 
 // register user
 describe("registerUser method tests", () => {
-  // test("Should return instance of User", () => {
-  //   let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
-  //   expect(response).toBeInstanceOf(User);
-  // });
+  test("Should return instance of User", () => {
+    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
+    expect(response).toBeInstanceOf(User);
+  });
 
   // log in
-  test("User is able to log in MY TESTTTTTT", () => {
+  test("User is able to log in", () => {
     const consoleLogSpy = jest.spyOn(console, "log");
     scooterApp.loginUser("Maxim", "qwerty123");
     let response = "User has been logged in";
 
     expect(consoleLogSpy).toHaveBeenCalledWith(response);
     // expect(response).toBe("User has been logged in");
+    consoleLogSpy.mockRestore();
+  });
+
+  // log out
+  test("User is able to log out", () => {
+    const consoleLogSpy = jest.spyOn(console, "log");
+    scooterApp.logoutUser("Maxim");
+    let response = "User is logged out";
+
+    expect(consoleLogSpy).toHaveBeenCalledWith(response);
+
     consoleLogSpy.mockRestore();
   });
 });
